@@ -2,10 +2,10 @@
 <script type="text/javascript" charset="utf-8">
   <%= sammy_js %>
   (function($) {
-    $.sammy(function() { with(this) {
+    var app = $.sammy(function() { with(this) {
       
       get(/\#(.*)$/, function() { with(this) {
-        partial(params['splat']);
+        partial(params['splat'] + '?_sammy=true');
       }});
       
     }});

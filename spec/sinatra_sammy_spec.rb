@@ -12,6 +12,7 @@ describe 'Sinatra::Sammy' do
     it 'returns the routes without a layout when passing ?_sammy=true' do
       get '/?_sammy=true'
       body.should.not.match(/html/m)
+      body.should.match(/h1/)
     end
     
   end

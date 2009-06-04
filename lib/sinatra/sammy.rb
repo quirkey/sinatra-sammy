@@ -38,7 +38,7 @@ module Sinatra
       app.helpers ::Sinatra::Sammy::Helpers
       
       app.before do
-        self.class.layout { '' } if params['_sammy']
+        self.class.layout { false } if params['_sammy']
       end
     end
     
