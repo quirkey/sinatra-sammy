@@ -5,7 +5,8 @@ Sinatra::Default.set(
   :environment => :test,
   :run => false,
   :raise_errors => true,
-  :logging => false
+  :logging => false,
+  :methodoverride => false
 )
 
 # The lib
@@ -26,6 +27,18 @@ module TestHelper
   
   def status
     last_response.status
+  end
+  
+  def render_sammy(sammy_options = {})
+    @count ||= 0
+    app.class.get "/other/#{@count}" do
+      puts "\nget options are #{sammy_options.inspect}"
+      sammy(sammy_options)
+    end
+    get "/other/#{@count}"
+    status.should == 200
+    @count += 1
+    body
   end
   
   include Rack::Test::Methods
