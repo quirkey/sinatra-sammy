@@ -32,7 +32,6 @@ module TestHelper
   def render_sammy(sammy_options = {})
     @count ||= 0
     app.class.get "/other/#{@count}" do
-      puts "\nget options are #{sammy_options.inspect}"
       sammy(sammy_options)
     end
     get "/other/#{@count}"

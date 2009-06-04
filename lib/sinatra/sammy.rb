@@ -7,7 +7,6 @@ module Sinatra
 
       def sammy(sammy_options = {})
         @sammy_options = sammy_options
-        puts "here the options are: " +sammy_options.inspect
         ERB.new(File.read(File.join(File.dirname(__FILE__), 'sammy.erb'))).result(binding)
       end
       
