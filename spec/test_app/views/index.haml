@@ -1,2 +1,7 @@
 %h1 Whoa! 
 %p It's the index, Bra!
+
+%h2 Check out these users!
+- ['aq', 'team_lazer'].each do |name|
+  %p
+    %a{:href => "/user/#{name}"}= name

@@ -8,13 +8,24 @@
         partial(params['splat'] + '?_sammy=true');
       }});
       
+      bind('changed', function() { with(this) {
+        $('a').attr('href', function() {
+          var href = $(this).attr('href');
+          if (href.match(/^\//)) {
+            return "#" + href;
+          } else {
+            return href;
+          }
+        });
+      }});
+      
     }});
     
     $(function() {
       <% @sammy_options.each do |option, value| %>
       app.<%= option %> = <%= value.inspect %>;
       <% end %>
-      app.run('#/');
+      app.run();
     });
   })(jQuery);
 </script>
