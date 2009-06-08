@@ -30,7 +30,7 @@ describe 'Sinatra::Sammy' do
     
     describe 'when passed options' do      
       it 'sets the options on the sammy app' do
-        render_sammy({:debug => true}).should.match(/app\.debug \= true/)
+        render_sammy({:debug => true}).should.match(/this\.debug \= true/)
       end
     end
   end

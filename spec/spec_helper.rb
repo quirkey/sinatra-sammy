@@ -31,9 +31,11 @@ module TestHelper
   
   def render_sammy(sammy_options = {})
     @count ||= 0
+    instance_eval <<-EOT
     app.class.get "/other/#{@count}" do
-      sammy(sammy_options)
+      sammy(#{sammy_options.inspect})
     end
+    EOT
     get "/other/#{@count}"
     status.should == 200
     @count += 1

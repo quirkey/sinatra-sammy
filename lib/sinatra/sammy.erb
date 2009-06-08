@@ -3,8 +3,13 @@
   <%= sammy_js %>
   (function($) {
     var app = $.sammy(function() { with(this) {
+
+      <% @sammy_options.each do |option, value| %>
+      this.<%= option %> = <%= value.inspect %>;
+      <% end %>
       
       get(/\#(.*)$/, function() { with(this) {
+        trigger('loading');
         partial(params['splat'] + '?_sammy=true');
       }});
       
@@ -22,9 +27,6 @@
     }});
     
     $(function() {
-      <% @sammy_options.each do |option, value| %>
-      app.<%= option %> = <%= value.inspect %>;
-      <% end %>
       app.run();
     });
   })(jQuery);
