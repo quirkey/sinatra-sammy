@@ -2,7 +2,7 @@
 <script type="text/javascript" charset="utf-8">
   <%= sammy_js %>
   (function($) {
-    var app = $.sammy(function() { with(this) {
+     app = $.sammy(function() { with(this) {
 
       <% @sammy_options.each do |option, value| %>
       this.<%= option %> = <%= value.inspect %>;
@@ -11,6 +11,25 @@
       get(/\#(.*)$/, function() { with(this) {
         trigger('loading');
         partial(params['splat'] + '?_sammy=true');
+      }});
+      
+      post(/^(.*)$/, function() { with(this) {
+        try {
+        var context = this;
+        trigger('loading');
+        $.ajax({
+          type: 'post',
+          url: this.params['splat'][0], 
+          data: this.params.toHash(), 
+          success: function(data) {
+            context.app.swap(data);
+            context.trigger('changed');
+          }
+        });
+      } catch(e) {
+        this.log(e);
+      }
+        return false;
       }});
       
       bind('changed', function() { with(this) {
@@ -23,7 +42,7 @@
           }
         });
       }});
-      
+            
     }});
     
     $(function() {

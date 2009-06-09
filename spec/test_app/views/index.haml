@@ -5,3 +5,9 @@
 - ['aq', 'team_lazer'].each do |name|
   %p
     %a{:href => "/user/#{name}"}= name
+
+%h2 Or create your own!
+
+%form{:method => 'post', :action => '/user'}
+  %input{:type => 'text', :name => 'name'}
+  %input{:type => 'submit', :value => 'Go!'}

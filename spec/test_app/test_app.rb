@@ -14,4 +14,9 @@ class TestApp < Sinatra::Default
     haml :user
   end
   
+  post '/user' do
+    @name = params['name'] + " POSTED"
+    haml :user
+  end
+  
 end

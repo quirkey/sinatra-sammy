@@ -24,7 +24,7 @@ module Sinatra
       end
       
       def sammy_js
-        File.read(vendor_path('sammy.js'))
+        File.read(vendor_path('sammy.min.js'))
       end
       
       private

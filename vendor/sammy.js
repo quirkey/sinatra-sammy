@@ -106,6 +106,17 @@
       return $.extend({}, obj);
     },
     
+    // Returns a copy of the object with Functions removed.
+    toHash: function() {
+      var json = {}; 
+      this.each(function(k,v) {
+        if (!$.isFunction(v)) {
+          json[k] = v
+        }
+      });
+      return json;
+    },
+    
     // Renders a simple HTML version of this Objects attributes.
     // Does not render functions.
     // For example. Given this Sammy.Object:
@@ -116,7 +127,7 @@
     toHTML: function() {
       var display = "";
       this.each(function(k, v) {
-        if (v.constructor != Function) {
+        if (!$.isFunction(v)) {
           display += "<strong>" + k + "</strong> " + v + "<br />";
         }
       });
@@ -634,6 +645,8 @@
         // reset last location
         this.last_location = location;
       } catch(e) {
+        // reset last location
+        this.last_location = location;
         // unless the error is a 404 and 404s are silenced
         if (e.toString().match(/^404/) && this.silence_404) {
           return returned;
