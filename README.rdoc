@@ -1,32 +1,63 @@
 = sinatra-sammy
 
-* FIX (url)
+http://code.quirkey.com/sammy
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Turns a sinatra app into a one page app using the teamwork of Sammy.
 
-== FEATURES/PROBLEMS:
+== FEATURES:
 
-* FIX (list of features or problems)
+Three lines of code will give turn your one sinatra app into a one page app.
 
-== SYNOPSIS:
+First, 
+  
+  sudo gem install sinatra-sammy
+  
+Next, in your app:
 
-  FIX (code sample of usage)
+  require 'sinatra'
+  require 'sinatra-sammy' # Add me!
+  
+  class MyApp < Sinatra::Default
+  
+    register Sinatra::Sammy # Add me !
+    
+    get '/' do
+      haml :index
+    end
+
+    # ...
+  end
+  
+Finally, in your layout:
+
+  !!!
+  %html{:xmlns=> "http://www.w3.org/1999/xhtml", 'xml:lang' => "en", :lang => "en"}
+    %head
+      %meta{'http-equiv' => "Content-Type", 'content' => "text/html; charset=utf-8"}
+      %title test_app2
+      / Set :element_selector to the element that 'yields'
+      = sammy(:element_selector => '#main')
+    %body
+      #main
+        = yield
+        
+Done. One pager, without sacrificing SEO.
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+Sinatra, a sinatra app, love of the universe.
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+  sudo gem install sinatra-sammy
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Aaron Quint, Quirkey NYC, LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
