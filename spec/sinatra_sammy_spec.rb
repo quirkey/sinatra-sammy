@@ -26,6 +26,7 @@ describe 'Sinatra::Sammy' do
     it 'renders a default sammy application with catch all routes' do
       render_sammy.should.match(/\$\.sammy/m)
       render_sammy.should.match(/get\(\/\\#\(\.\*\)\$\//)
+      render_sammy.should.match(/post\(/)
     end
     
     describe 'when passed options' do      
