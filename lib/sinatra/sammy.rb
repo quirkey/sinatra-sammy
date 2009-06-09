@@ -2,6 +2,7 @@ require 'erb'
 
 module Sinatra
   module Sammy
+    VERSION = '0.0.1'
     
     module Helpers
 

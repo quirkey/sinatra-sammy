@@ -4,7 +4,7 @@ http://code.quirkey.com/sammy
 
 == DESCRIPTION:
 
-Turns a sinatra app into a one page app using the teamwork of Sammy.
+A Sinatra extension that turns a sinatra app into a one page app using the teamwork of Sammy.
 
 == FEATURES:
 

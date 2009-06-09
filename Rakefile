@@ -1,9 +1,9 @@
 %w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
-require File.dirname(__FILE__) + '/lib/sinatra-sammy'
+require File.dirname(__FILE__) + '/lib/sinatra/sammy'
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new('sinatra-sammy', SinatraSammy::VERSION) do |p|
+$hoe = Hoe.new('sinatra-sammy', Sinatra::Sammy::VERSION) do |p|
   p.developer('Aaron Quint', 'aaron@quirkey.com')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.rubyforge_name       = 'quirkey' 
